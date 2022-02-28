@@ -18,7 +18,7 @@
 
             async function login() {
                 console.log("Login Clicked")
-                var user = await Moralis.Web3.authenticate();
+                var user = await Moralis.Web3.authenticate({ signingMessage: "Q's Dapp"});
                 if(user) {
                     console.log(user)
                 }
