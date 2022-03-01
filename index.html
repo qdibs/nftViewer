@@ -24,17 +24,18 @@
                 console.log("Login Clicked")
                 var user = await Moralis.Web3.authenticate({ signingMessage: "Q's Dapp"});
                 if(user) {
-                    console.log(user)
+                    console.log(user.get('ethAddress'))
                 }
                 else {
                 alert("No ETH brower extension detected.");
                 }
             };
 
-            getNFTs = async () => {
-                console.log('get nfts clicked');
-                let nfts = await Moralis.Web3API.account.getNFTs({ chain: 'ethereum' })
-            }
+            async function getNFTs() {
+                console.log("Get NFTs")
+                // get NFTs for current user on Mainnet
+                const userEthNFTs = await Moralis.Web3API.account.getNFTs();
+            };
 
         </script>
     </body>
