@@ -62,7 +62,7 @@
             };
 
             fixURL = (url) => {
-                if (url.startWith("ipfs")) {
+                if (url.startsWith("ipfs")) {
                     return "https://ipfs.moralis.io:2053/ipfs/" + url.split("ipfs://").slice(-1)
                 }
                 else {
