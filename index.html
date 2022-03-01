@@ -13,6 +13,8 @@
         <h1>NFT Viewer</h1>
 
         <button id="btn" onclick="login()">Login with MetaMask</button>
+
+        <button id="btn" onclick="getNFTs()">View NFT's</button>
         
         <script>
             Moralis.initialize("BAwvbMiToQr1JICUrf4Tm2b4y6IJInP2DpWLGXMa");
@@ -28,6 +30,12 @@
                 alert("No ETH brower extension detected.");
                 }
             };
+
+            getNFTs = async () => {
+                console.log('get nfts clicked');
+                let nfts = await Moralis.Web3API.account.getNFTs({ chain: 'ethereum' })
+            }
+
         </script>
     </body>
     
