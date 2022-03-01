@@ -15,6 +15,10 @@
         <button id="btn" onclick="login()">Login with MetaMask</button>
 
         <button id="btn" onclick="getNFTs()">View NFT's</button>
+
+        <div id="NFTcanvas">
+
+        </div>
         
         <script>
             const serverUrl = "https://xfwseoyfgpul.usemoralis.com:2053/server";
@@ -37,14 +41,24 @@
                 // get NFTs for current user on Mainnet
                 let nfts = await Moralis.Web3API.account.getNFTs({ chain: 'mainnet' });
                 console.log(nfts)
+                let NFTcanvas = document.querySelector('#NFTcanvas');
+
                 if(nfts.result.length > 0) {
                     nfts.result.forEach(n => {
-                        console.log(n.metadata);
+                        let metadata = JSON.parse(n.metadata);
+                        let content = `
+                        <div class="card" >
+                            <img src="" class="card-img-top" >
+                            <div class="card-body">
+                                <h5 class="card-title">${metadata.name}</h5>
+                                <p class="card-text">${metadata.description}</p>
+                            </div>
+                        </div>
+                        `
+
+                        NFTcanvas.innerHTML += content;
                     })
-                }
-                else {
-                alert("No ETH NFTs detected.");
-                }
+                }  
             };
 
         </script>
