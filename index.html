@@ -35,9 +35,12 @@
             async function getNFTs() {
                 console.log("Get NFTs")
                 // get NFTs for current user on Mainnet
-                const userEthNFTs = await Moralis.Web3API.account.getNFTs();
-                if(user) {
-                    console.log(user.getNFTs())
+                let nfts = await Moralis.Web3API.account.getNFTs({ chain: 'mainnet' });
+                console.log(nfts)
+                if(nft.result.length > 0) {
+                    nfts.result.forEach(n => {
+                        console.log(n.metadata);
+                    })
                 }
                 else {
                 alert("No ETH NFTs detected.");
