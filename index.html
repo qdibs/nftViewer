@@ -60,8 +60,7 @@
                 }  
             }
 
-            function fixURL(url) {
-                console.log("Get NFTs")
+            fixURL = (url) => {
                 if (url.startsWith("ipfs")) {
                     return "https://ipfs.moralis.io:2053/ipfs/" + url.split("ipfs://").slice(-1)
                 }
