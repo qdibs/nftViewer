@@ -48,7 +48,7 @@
                         let metadata = JSON.parse(n.metadata);
                         let content = `
                         <div class="card col-md-3" >
-                            <img src="${metadata.image_url}" class="card-img-top" height=300>
+                            <img src="${fixURL(metadata.image_url)}" class="card-img-top" height=300>
                             <div class="card-body">
                                 <h5 class="card-title">${metadata.name}</h5>
                                 <p class="card-text">${metadata.description}</p>
@@ -58,6 +58,15 @@
                         NFTcanvas.innerHTML += content;
                     })
                 }  
+            }
+
+            fixURL = (url) => {
+                if (url?.startsWith("ipfs")) {
+                    return "https://ipfs.moralis.io:2053/ipfs/" + url.split("ipfs://").slice(-1)
+                }
+                else {
+                    return url + "?format=json"
+                }
             }
 
         </script>
