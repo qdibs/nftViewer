@@ -24,6 +24,46 @@
                 if(user) {
                     console.log(user)
                 }
+                else {
+                alert("No ETH brower extension detected.");
+                }
+
+                window.userAddress = window.localStorage.getItem("userAddress");
+                showAddress();
+
+            };
+
+            // Use this function to turn a 42 character ETH address
+            // into an address like 0x345...12345
+            function truncateAddress(address) {
+              if (!address) {
+                return "";
+              }
+              return `${address.substr(0, 5)}...${address.substr(
+                address.length - 5,
+                address.length
+              )}`;
+            }
+
+            // Display or remove the users know address on the frontend
+            function showAddress() {
+              if (!window.userAddress) {
+                document.getElementById("userAddress").innerText = "";
+                document.getElementById("logoutButton").classList.add("hidden");
+                return false;
+              }
+
+              document.getElementById(
+                "userAddress"
+              ).innerText = `ETH Address: ${truncateAddress(window.userAddress)}`;
+              document.getElementById("logoutButton").classList.remove("hidden");
+            }
+
+            // remove stored user address and reset frontend
+            function logout() {
+              window.userAddress = null;
+              window.localStorage.removeItem("userAddress");
+              showAddress();
             }
         </script>
     </body>
