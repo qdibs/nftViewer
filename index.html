@@ -37,7 +37,7 @@
                 // get NFTs for current user on Mainnet
                 let nfts = await Moralis.Web3API.account.getNFTs({ chain: 'mainnet' });
                 console.log(nfts)
-                if(nft.result.length > 0) {
+                if(nfts.result.length > 0) {
                     nfts.result.forEach(n => {
                         console.log(n.metadata);
                     })
