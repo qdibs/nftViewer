@@ -4,11 +4,6 @@ const serverUrl = "https://xfwseoyfgpul.usemoralis.com:2053/server";
 const appId = "BAwvbMiToQr1JICUrf4Tm2b4y6IJInP2DpWLGXMa";
 Moralis.start({ serverUrl, appId });
 
-let homepage = "http://127.0.0.1:5500/index.html"
-if(Moralis.User.current() == null && window.location.href != homepage) {
-    document.querySelector('body').style.display = 'none';
-    window.location.href = "index.html";
-}
 
 login = async () => {
     await Moralis.authenticate().then(async function (user) {
