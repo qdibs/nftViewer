@@ -103,7 +103,7 @@ getBalances = async () => {
 
 getNFTs = async () => {
     console.log('Get NFTs clicked');
-    let nfts = await Moralis.Web3API.account.getNFTs({ chain: "rinkeby" });
+    let nfts = await Moralis.Web3API.account.getNFTs({ chain: "mainnet" });
     console.log(nfts);
     let tableOfNFTs = document.querySelector('#tableOfNFTs');
 
