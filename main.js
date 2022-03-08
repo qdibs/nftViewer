@@ -108,7 +108,7 @@ getNFTs = async () => {
     let tableOfNFTs = document.querySelector('#tableOfNFTs');
 
     if(nfts.result.length > 0) {
-        nfts.result.for(n => {
+        nfts.result.forEach(n => {
            let metadata = JSON.parse(n.metadata); 
            let content = `
            <div class="card col-md-3">
